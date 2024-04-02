@@ -44,7 +44,7 @@ interface Config {
   eventDataset?: string;
 
   /** Callback for custom modification of the fields */
-  customize: (fields: any, req: IncomingMessage, res: ServerResponse) => void;
+  logHook: (event: { record: any, req: IncomingMessage, res: ServerResponse }) => void;
 }
 
 declare function ecsFormat(config?: Config): FormatFn;

@@ -175,7 +175,7 @@ function ecsFormat (opts) {
     formatHttpRequest(ecsFields, req)
     formatHttpResponse(ecsFields, res)
 
-    opts.customize && opts.customize(ecsFields, req, res);
+    opts.logHook && opts.logHook({ record: ecsFields, req, res })
 
     return stringify(ecsFields)
   }

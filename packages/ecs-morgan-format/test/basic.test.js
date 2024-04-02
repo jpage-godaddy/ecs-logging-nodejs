@@ -245,9 +245,9 @@ test('can provide custom fields', t => {
   })
   const logger = morgan(
     ecsFormat({
-      customize(fields, req, res) {
-        fields.labels ??= {};
-        fields.labels.custom = 'customValue';
+      logHook ({ record, req, res }) {
+        record.labels = record.labels || {}
+        record.labels.custom = 'customValue'
       }
     }),
     { stream }
